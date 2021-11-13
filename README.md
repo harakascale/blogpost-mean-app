@@ -1,6 +1,6 @@
-# MeanCourseApp
+# MessageBoardApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4. This fullstack application using the MEAN Stack. The frontend was built with Angular. The BackEnd was built with nodejs and Express.js. MongoDB was used for the database.
 
 ## Development server
 
