@@ -28,10 +28,10 @@ export class PostsService {
               title: post.title,
               content: post.content,
               id: post._id,
-              imagePath: post.imagePath
+              imagePath: post.imagePath,
+              creator: post.creator
             };
           }), maxPosts: postData.maxPosts };
-
       })
       )
       .subscribe(transformedPostsData => {
@@ -47,7 +47,13 @@ export class PostsService {
   }
 
   receivePost(id: string){
-    return this.httpClient.get<{_id: string, title: string, content: string, imagePath: string}>('http://localhost:3000/api/posts/' + id);
+    return this.httpClient.get<{
+      _id: string,
+      title: string,
+      content: string,
+      imagePath: string,
+      creator: string,
+    }>('http://localhost:3000/api/posts/' + id);
   }
 
   addPost(title:string, content: string, image: File){
@@ -86,32 +92,18 @@ export class PostsService {
           id: id,
           title:title,
           content: content,
-          imagePath: image
+          imagePath: image,
+          creator: null
         };
     }
 
     this.httpClient.put('http://localhost:3000/api/posts/' + id, postData)
     .subscribe(response => {
-      // const updatedPosts =[...this.posts];
-      // const oldPostIndex = updatedPosts.findIndex( p => p.id === id);
-      // const post: Post = {
-      //   id: id,
-      //   title:title,
-      //   content: content,
-      //   imagePath: ""
-      // };
-      // updatedPosts[oldPostIndex] = post;
-      // this.postsUpdated.next([...this.posts]);
       this.router.navigate(["/"]);
     });
   }
 
-  deletePost(postId: string){
-    return this.httpClient.delete('http://localhost:3000/api/posts/' + postId);
-    // .subscribe(() =>{
-    //   const updatedPosts =  this.posts.filter(post => post.id !== postId);
-    //   this.posts = updatedPosts;
-    //   this.postsUpdated.next([...this.posts]);
-    // });
+  deletePost(postId: string) {
+    return this.httpClient.delete("http://localhost:3000/api/posts/" + postId);
   }
 }
