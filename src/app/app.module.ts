@@ -20,6 +20,9 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     PostListComponent,
     SignupComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,11 +48,16 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HttpClientModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
+    MatDialogModule
   ],
-  providers: [PostsService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    PostsService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule {
 
