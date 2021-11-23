@@ -1,5 +1,5 @@
 
-const bcrypt = require("bcrypt"); // install bcrypt package - npm install --save bcrypt
+const bcrypt = require("bcryptjs"); // install bcrypt(dev) package - npm install --save bcrypt, bcryptjs for production
 const jwt = require("jsonwebtoken"); // install jsonwebtoken package - npm install --save jsonwebtoken
 const User = require("../models/user");
 
