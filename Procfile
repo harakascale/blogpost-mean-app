@@ -1,2 +1,2 @@
-web: npm run start:server
+web: node server.js
 
