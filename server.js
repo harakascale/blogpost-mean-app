@@ -1,6 +1,7 @@
 const http = require('http');
 const app = require('./app');
 const debug = require("debug")("node-angular");
+const path = require('path'); // this is for use with Heroku
 
 // const port = process.env.PORT || 3000
 
@@ -44,6 +45,13 @@ const onError = error => {
       throw error;
   }
 };
+
+
+//These two methods are helps in  deploying to Heroku
+app.use(express.static(__dirname + '/dist'));
+app.get('/', (req, res) =>{
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 const onListening = () => {
   const addr = server.address();
