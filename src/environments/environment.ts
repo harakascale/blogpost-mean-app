@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://localhost:3000/api"
+  // apiUrl:"http://localhost:3000/api"
+  apiUrl:"http://147.182.152.180:3000/api" // This is for digitalOcean
 };
 
 /*

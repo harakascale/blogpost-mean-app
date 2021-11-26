@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl:"https://messageboard-app-angular.herokuapp.com/api"
+  apiUrl:"http://147.182.152.180:3000/api"
 };
