@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod && mv dist/blog-app_static",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:server": "nodemon ./backend/server.js"
