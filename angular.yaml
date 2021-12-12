@@ -1,0 +1,5 @@
+name: app
+static_sites:
+  - name: angular
+    ...
+    catchall_document: index.html
